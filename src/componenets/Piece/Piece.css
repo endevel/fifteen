@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css?family=Alfa+Slab+One');
+
+.piece {
+    margin: 5px;
+    width: 80px;
+    height: 80px;
+    display: table;
+    cursor: pointer;
+    font-family: 'Alfa Slab One', cursive;
+    color:peru;
+    border-radius: 50px 0 0 50px;
+}
+
+.cell {
+    background-color: antiquewhite;
+    border: 1px solid rgba(240, 234, 222, 0.667);
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    border-radius: 10px;
+}
+
+.empty-cell {
+    opacity: 0.0;
+    border: 0px aliceblue;
+}

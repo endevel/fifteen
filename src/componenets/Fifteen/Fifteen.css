@@ -1,0 +1,10 @@
+.fifteen {
+    margin: 20px;
+    padding: 10px;
+    border: 1px solid;
+    min-width: 100px;
+    display: inline-block;
+    flex-direction: column;
+    flex-basis: 1;
+    flex-shrink: initial;
+}
