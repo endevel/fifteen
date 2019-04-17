@@ -17,11 +17,15 @@ export default class Fifteen extends Component {
   }
 
   cellClick = (num) => {
-    
+    if ( !this.props.gameRunning )
+      return;
+      
     this.setState(() => {
       const b = this.state.board;
-      console.log('swap: ' + num);
       b.swap(num);
+      if ( b.isFinalPosition() ) {
+        console.log('Finish !!!');
+      }
       return b;
     })
 
@@ -37,16 +41,20 @@ export default class Fifteen extends Component {
         
         <FifteenRow cells = { arr.slice(0, 4) }  
                     indexes = {[0, 1, 2, 3]}  
-                    cellClick = { (num) => {this.cellClick(num) } } />
+                    cellClick = { (num) => {this.cellClick(num) } } 
+                    />
         <FifteenRow cells = { arr.slice(4, 8) }   
                     indexes = {[4, 5, 6, 7]}  
-                    cellClick = { (num) => {this.cellClick(num) } } />
+                    cellClick = { (num) => {this.cellClick(num) } } 
+                    />
         <FifteenRow cells = { arr.slice(8, 12) }  
                     indexes = {[8, 9, 10, 11]}  
-                    cellClick = { (num) => {this.cellClick(num) } } />
+                    cellClick = { (num) => {this.cellClick(num) } } 
+                    />
         <FifteenRow cells = { arr.slice(12, 16) } 
                     indexes = {[12, 13, 14, 15]}  
-                    cellClick = { (num) => {this.cellClick(num) } } />
+                    cellClick = { (num) => {this.cellClick(num) } } 
+                    />
 
       </div>
     )

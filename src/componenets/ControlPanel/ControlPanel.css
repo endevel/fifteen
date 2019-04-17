@@ -1,5 +1,13 @@
 .control-panel {
     margin: 20px;
-    height: 50px;    
-    border: 1px solid;
+    padding: 10px;
+    height: 70px;    
+    border: 1px solid chocolate;
+    border-radius: 5px;    
+    display: flex;
+    flex-direction: row;
+}
+
+.control-btn {
+    padding: 5px;
 }

@@ -11,10 +11,14 @@ export default class FifteenRow extends Component {
 
     return (
       <div className = 'fifteen-row'>
-        <Piece number = { cells[0] } onCellClick = { () => {this.props.cellClick(indexes[0]) } } />
-        <Piece number = { cells[1] } onCellClick = { () => {this.props.cellClick(indexes[1]) } } />
-        <Piece number = { cells[2] } onCellClick = { () => {this.props.cellClick(indexes[2]) } } />
-        <Piece number = { cells[3] } onCellClick = { () => {this.props.cellClick(indexes[3]) } } />
+        <Piece number = { cells[0] }
+               onCellClick = { () => {this.props.cellClick(indexes[0]) } } />
+        <Piece number = { cells[1] } 
+               onCellClick = { () => {this.props.cellClick(indexes[1]) } } />
+        <Piece number = { cells[2] } 
+               onCellClick = { () => {this.props.cellClick(indexes[2]) } } />
+        <Piece number = { cells[3] } 
+               onCellClick = { () => {this.props.cellClick(indexes[3]) } } />
       </div>
     )    
   }

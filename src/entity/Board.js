@@ -3,6 +3,7 @@ import BoardCell from "./BoardCell";
 const CELL_COUNT = 36;
 
 export default class Board {
+    finalPosition = [];
     elements = [];
     map = [];
 
@@ -12,7 +13,9 @@ export default class Board {
             19, 20, 21, 22, 25, 26, 27, 28
         ]
         this.createElements();
+        this.finalPosition = this.getElementsAsNumbers();
         this.shuffle();
+        console.log(this.finalPosition);
     }
 
     createElements = () => {
@@ -22,7 +25,7 @@ export default class Board {
         }
         for ( let i = 0; i < this.map.length; i++ ) {
             this.elements[this.map[i]].setValue(i);
-        }
+        }        
     }
 
     shuffle = () => {
@@ -77,6 +80,20 @@ export default class Board {
         }
     }
     
+    isFinalPosition = () => {
+        const arr = this.getElementsAsNumbers();
+        if ( arr.length !== this.finalPosition.length ) {
+            return false;
+        }
+
+        for ( let i = 0; i < arr.length; i++ ) {
+            if ( arr[i] !== this.finalPosition[i] ) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     getElementsAsNumbers = () => {
         return this.elements.filter( n => !n.isBorder() ).map( n => n.getValue());
     }    
