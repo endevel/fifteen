@@ -13,7 +13,7 @@ export default class Fifteen extends Component {
     const b = new Board()
     this.state = {
       board: b
-    }
+    }    
   }
 
   cellClick = (num) => {
@@ -25,11 +25,16 @@ export default class Fifteen extends Component {
       b.swap(num);
       if ( b.isFinalPosition() ) {
         console.log('Finish !!!');
+        this.props.onFinishHundler();
       }
       return b;
     })
 
-    console.log('Cell clicked: ' + num);
+    //console.log('Cell clicked: ' + num);
+  }
+
+  onFinishHandler = () => {
+
   }
 
   render() {

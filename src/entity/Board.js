@@ -1,9 +1,10 @@
 import BoardCell from "./BoardCell";
 
 const CELL_COUNT = 36;
+const DEBUG_MODE = true;
 
 export default class Board {
-    finalPosition = [];
+    finalPosition = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 0];
     elements = [];
     map = [];
 
@@ -13,7 +14,6 @@ export default class Board {
             19, 20, 21, 22, 25, 26, 27, 28
         ]
         this.createElements();
-        this.finalPosition = this.getElementsAsNumbers();
         this.shuffle();
         console.log(this.finalPosition);
     }
@@ -29,6 +29,11 @@ export default class Board {
     }
 
     shuffle = () => {
+        if ( DEBUG_MODE ) {
+            this.fakeShuffle();
+            return;
+        }
+
         const arr = this.getElementsAsNumbers();
         let j, tmp;
         for ( let i = arr.length - 1; i > 0; i-- ) {
@@ -40,6 +45,16 @@ export default class Board {
         for ( let i = 0; i < this.map.length; i++ ) {
             this.elements[this.map[i]].setValue(arr[i]);
         }        
+    }
+
+    fakeShuffle = () => {
+        for ( let i = 0; i < this.map.length - 1; i++ ) {
+            this.elements[this.map[i]].setValue(i+1);
+        }        
+        this.elements[this.map[12]].setValue(0);
+        this.elements[this.map[13]].setValue(13);        
+        this.elements[this.map[14]].setValue(14);
+        this.elements[this.map[15]].setValue(15);        
     }
 
     swapCells ( firstNdx, secondNdx ) {
@@ -88,6 +103,9 @@ export default class Board {
 
         for ( let i = 0; i < arr.length; i++ ) {
             if ( arr[i] !== this.finalPosition[i] ) {
+                //console.log('not final: ');
+                //console.log(arr);
+                //console.log(this.finalPosition);
                 return false;
             }
         }

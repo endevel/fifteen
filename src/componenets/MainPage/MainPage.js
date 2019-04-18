@@ -26,6 +26,10 @@ export default class MainPage extends Component {
   }
 
   startHundler = () => {
+    if ( this.state.gameRunning ) {
+      return;
+    }
+
     this.stopWatch.start();
     this.setState({
       gameRunning: true
@@ -33,7 +37,10 @@ export default class MainPage extends Component {
   }
 
   finishHundler = () => {
+    if ( !this.state.gameRunning )
+      return;
     this.stopWatch.finish();
+
     this.setState({
       gameRunning: false
     })
@@ -58,7 +65,10 @@ export default class MainPage extends Component {
           onClickStart = { this.startHundler }
           onClickFinish = { this.finishHundler }
         />
-        <Fifteen gameRunning = { this.state.gameRunning }/>
+        <Fifteen 
+          gameRunning = { this.state.gameRunning }
+          onFinishHundler = { this.finishHundler }
+        />
         <TimeDisplay 
           hours = { this.state.timer.hours }
           minutes = { this.state.timer.minutes }
